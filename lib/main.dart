@@ -52,7 +52,7 @@ class MyHomePage extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        transaction.amount.toString(),
+                        '\$${transaction.amount}',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
