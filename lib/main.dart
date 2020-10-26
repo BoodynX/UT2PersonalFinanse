@@ -40,6 +40,7 @@ class MyHomePage extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          /////////// CHART
           Container(
             width: double.infinity,
             child: Card(
@@ -47,11 +48,37 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
+          /////////// TX FORM
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text('Add Transaction'),
+                    textColor: Colors.purple,
+                  )
+                ],
+              ),
+            ),
+          ),
+
+          /////////// TX LIST
           Column(
             children: transactions.map((Transaction transaction) {
               return Card(
                 child: Row(
                   children: [
+                    /////////// TX AMOUNT
                     Container(
                       child: Text(
                         '\$${transaction.amount}',
@@ -73,9 +100,11 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                     ),
+                    /////////// TX DETAILS
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        /////////// TX TITLE
                         Text(
                           transaction.title,
                           style: TextStyle(
@@ -83,6 +112,7 @@ class MyHomePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        /////////// TX DATE
                         Text(
                           DateFormat.yMMMMEEEEd().format(transaction.date),
                           style: TextStyle(
