@@ -47,11 +47,7 @@ class TransactionList extends StatelessWidget {
                     /////////// TX TITLE
                     Text(
                       transactions[index].title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Theme.of(context).primaryColor
-                      ),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     /////////// TX DATE
                     Text(
