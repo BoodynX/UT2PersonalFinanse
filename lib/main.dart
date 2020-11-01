@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             /////////// CHART
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
@@ -134,6 +134,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
     setState(() {
       _userTransactions.add(newTransaction);
+    });
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((transaxn) => transaxn.id == id);
     });
   }
 }
