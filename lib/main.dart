@@ -5,7 +5,18 @@ import 'widgets/chart.dart';
 import 'widgets/new_transactions.dart';
 import 'widgets/transaction_list.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // Just a tutorial reminder that this is an option.
+  /*
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  */
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
