@@ -75,25 +75,25 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
       id: 't3',
       title: 'Game Duck',
-      amount: 11.44,
+      amount: 211.44,
       date: DateTime.now().subtract(Duration(days: 2)),
     ),
     Transaction(
       id: 't4',
       title: 'Game Dog',
-      amount: 92.00,
+      amount: 192.00,
       date: DateTime.now().subtract(Duration(days: 1)),
     ),
     Transaction(
       id: 't5',
       title: 'XBOX XXX',
-      amount: 999.55,
+      amount: 499.55,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't6',
       title: 'XBOX YYY',
-      amount: 999.55,
+      amount: 499.55,
       date: DateTime.now().subtract(Duration(days: 3)),
     ),
   ];
