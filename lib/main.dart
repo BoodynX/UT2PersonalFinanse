@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'models/transaction.dart';
@@ -62,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't1',
       title: 'New Shoes',
       amount: 69.99,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 2)),
     ),
     Transaction(
       id: 't2',
@@ -74,13 +76,13 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't3',
       title: 'Game Duck',
       amount: 11.44,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 2)),
     ),
     Transaction(
       id: 't4',
       title: 'Game Dog',
       amount: 92.00,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 1)),
     ),
     Transaction(
       id: 't5',
@@ -92,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't6',
       title: 'XBOX YYY',
       amount: 999.55,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(Duration(days: 3)),
     ),
   ];
 
@@ -106,8 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    final isLandscape =
-        mediaQuery.orientation == Orientation.landscape;
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
     final appBar = AppBar(
       title: Text('Personal Expenses'),
       actions: <Widget>[
@@ -137,7 +138,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text('Show Chart'),
-                  Switch(
+                  Switch.adaptive(
+                    activeColor: Theme.of(context).accentColor,
                     value: _showChart,
                     onChanged: (value) {
                       setState(() {
@@ -170,10 +172,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _startAddNewTransaction(context),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () => _startAddNewTransaction(context),
+            ),
     );
   }
 
