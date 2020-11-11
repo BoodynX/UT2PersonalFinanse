@@ -33,7 +33,6 @@ class _NewTransactionState extends State<NewTransaction> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              CupertinoTextField(),
               TextField(
                 decoration: InputDecoration(labelText: 'Title'),
                 controller: _titleController,
