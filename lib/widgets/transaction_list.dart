@@ -42,7 +42,10 @@ class TransactionList extends StatelessWidget {
                 .toList(),
           );
 
-    // // This is not working due to a bug in Flutters ListView.builder
+    // // This is not working due to a bug in Flutters ListView.builder,
+    // // however ListView.builder would be better because it renders only
+    // // the items that are on the screen, it's more efficient that way.
+
     // : ListView.builder(
     //     itemCount: transactions.length,
     //     itemBuilder: (context, index) {
