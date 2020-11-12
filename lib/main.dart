@@ -112,27 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
 
     final PreferredSizeWidget appBar = Platform.isIOS
-        ? CupertinoNavigationBar(
-            middle: Text('Personal Expenses'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                GestureDetector(
-                  child: Icon(CupertinoIcons.add),
-                  onTap: () => _startAddNewTransaction(context),
-                )
-              ],
-            ),
-          )
-        : AppBar(
-            title: Text('Personal Expenses'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () => _startAddNewTransaction(context),
-              )
-            ],
-          );
+        ? _buildCupertinoNavigationBar(context)
+        : _buildAppBar(context);
 
     var transactionsListWidget = Container(
       height: (mediaQuery.size.height -
@@ -176,6 +157,33 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () => _startAddNewTransaction(context),
                   ),
           );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+          title: Text('Personal Expenses'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => _startAddNewTransaction(context),
+            )
+          ],
+        );
+  }
+
+  CupertinoNavigationBar _buildCupertinoNavigationBar(BuildContext context) {
+    return CupertinoNavigationBar(
+          middle: Text('Personal Expenses'),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              GestureDetector(
+                child: Icon(CupertinoIcons.add),
+                onTap: () => _startAddNewTransaction(context),
+              )
+            ],
+          ),
+        );
   }
 
   void _startAddNewTransaction(BuildContext context) {
